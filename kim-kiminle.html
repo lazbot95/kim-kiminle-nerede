@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kim Kiminle Nerede? — Turkish Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #FAF8F2;
+      color: #1A1A2E;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C8A84B;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .game-title {
+      font-family: 'Righteous', cursive;
+      font-size: 28px;
+      color: #1A1A2E;
+      text-align: center;
+      margin-bottom: 0.35rem;
+      letter-spacing: 1px;
+    }
+
+    .game-sub {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .game-wrap {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .q-btn {
+      border: 1.5px solid #ddd;
+      border-radius: 14px;
+      padding: 14px 10px;
+      cursor: pointer;
+      background: #fff;
+      transition: transform 0.12s, border-color 0.15s, background 0.15s;
+      text-align: center;
+    }
+
+    .q-btn:hover { border-color: #aaa; transform: translateY(-2px); }
+    .q-btn:active { transform: scale(0.97); }
+
+    .q-btn .q-label {
+      font-size: 10px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .q-btn .q-turkish {
+      font-family: 'Righteous', cursive;
+      font-size: 16px;
+      color: #1A1A2E;
+    }
+
+    .q-btn[data-cat="kim"]       { --accent: #185FA5; --accent-bg: #E6F1FB; }
+    .q-btn[data-cat="kiminle"]   { --accent: #0F6E56; --accent-bg: #E1F5EE; }
+    .q-btn[data-cat="nerede"]    { --accent: #993C1D; --accent-bg: #FAECE7; }
+    .q-btn[data-cat="nezaman"]   { --accent: #854F0B; --accent-bg: #FAEEDA; }
+    .q-btn[data-cat="neyapiyor"] { --accent: #993556; --accent-bg: #FBEAF0; }
+
+    .q-btn.active {
+      background: var(--accent-bg);
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .q-btn.active .q-turkish { color: var(--accent); }
+
+    .result-area {
+      min-height: 110px;
+      border-radius: 14px;
+      border: 1.5px solid #e0ddd4;
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+    }
+
+    .result-placeholder {
+      color: #bbb;
+      font-size: 14px;
+      text-align: center;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .result-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+    }
+
+    .chip {
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .chip-tr {
+      color: #999;
+      font-size: 11px;
+      padding: 0 4px;
+    }
+
+    .chip[data-cat="kim"]       { background: #E6F1FB; color: #185FA5; }
+    .chip[data-cat="kiminle"]   { background: #E1F5EE; color: #0F6E56; }
+    .chip[data-cat="nerede"]    { background: #FAECE7; color: #993C1D; }
+    .chip[data-cat="nezaman"]   { background: #FAEEDA; color: #854F0B; }
+    .chip[data-cat="neyapiyor"] { background: #FBEAF0; color: #993556; }
+
+    .sep { color: #ccc; font-size: 20px; align-self: flex-start; padding-top: 5px; }
+
+    .sentence-area {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A2E;
+      line-height: 1.7;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      display: none;
+    }
+
+    .sentence-en {
+      font-size: 13px;
+      font-weight: 400;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 13px 18px;
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid #ddd;
+      background: #fff;
+      color: #1A1A2E;
+      transition: transform 0.1s, background 0.1s;
+    }
+
+    .action-btn:hover { background: #f5f2ea; }
+    .action-btn:active { transform: scale(0.97); }
+
+    .action-btn.primary {
+      background: #1A1A2E;
+      color: #FAF8F2;
+      border-color: #1A1A2E;
+    }
+    .action-btn.primary:hover { opacity: 0.85; }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #bbb;
+      text-align: center;
+    }
+
+    .footer a { color: #C8A84B; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .spin-anim { animation: popIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  </style>
+</head>
+<body>
+
+  <div class="brand">Turkish Academy</div>
+  <h1 class="game-title">Kim Kiminle Nerede?</h1>
+  <p class="game-sub">Bir soruya tıkla, rastgele bir cevap çek. Hepsini doldur!</p>
+
+  <div class="game-wrap">
+    <div class="questions-grid">
+      <button class="q-btn" data-cat="kim" onclick="draw('kim')">
+        <div class="q-label">soru 1</div>
+        <div class="q-turkish">Kim?</div>
+      </button>
+      <button class="q-btn" data-cat="kiminle" onclick="draw('kiminle')">
+        <div class="q-label">soru 2</div>
+        <div class="q-turkish">Kiminle?</div>
+      </button>
+      <button class="q-btn" data-cat="nerede" onclick="draw('nerede')">
+        <div class="q-label">soru 3</div>
+        <div class="q-turkish">Nerede?</div>
+      </button>
+      <button class="q-btn" data-cat="nezaman" onclick="draw('nezaman')">
+        <div class="q-label">soru 4</div>
+        <div class="q-turkish">Ne zaman?</div>
+      </button>
+      <button class="q-btn" data-cat="neyapiyor" onclick="draw('neyapiyor')">
+        <div class="q-label">soru 5</div>
+        <div class="q-turkish">Ne yapıyor?</div>
+      </button>
+    </div>
+
+    <div class="result-area" id="resultArea">
+      <div class="result-placeholder" id="placeholder">Bir soruya tıklayarak başla!</div>
+      <div class="result-chips" id="chips" style="display:none;"></div>
+      <div class="sentence-area" id="sentence"></div>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn" onclick="drawAll()">Tümünü Çek</button>
+      <button class="action-btn primary" onclick="resetAll()">Yeniden Başla</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    A free game by <a href="https://turkish.academy" target="_blank">Turkish Academy</a>
+  </div>
+
+<script>
+const pools = {
+  kim: [
+    {tr:"Britney Spears",en:"Britney Spears"},{tr:"Tarkan",en:"Tarkan"},{tr:"Beyoncé",en:"Beyoncé"},
+    {tr:"Alperen Şengün",en:"Alperen Şengün"},{tr:"Cem Yılmaz",en:"Cem Yılmaz"},{tr:"Lady Gaga",en:"Lady Gaga"},
+    {tr:"Hülya Avşar",en:"Hülya Avşar"},{tr:"Elon Musk",en:"Elon Musk"},{tr:"Sezen Aksu",en:"Sezen Aksu"},
+    {tr:"Lionel Messi",en:"Lionel Messi"},{tr:"Hadise",en:"Hadise"},{tr:"Cristiano Ronaldo",en:"Cristiano Ronaldo"},
+    {tr:"Barış Manço",en:"Barış Manço"},{tr:"Shakira",en:"Shakira"},{tr:"Fatih Terim",en:"Fatih Terim"},
+    {tr:"Rihanna",en:"Rihanna"},{tr:"Ajda Pekkan",en:"Ajda Pekkan"},{tr:"Keanu Reeves",en:"Keanu Reeves"},
+    {tr:"Ceylan Ertem",en:"Ceylan Ertem"},{tr:"Celine Dion",en:"Celine Dion"},{tr:"Müslüm Gürses",en:"Müslüm Gürses"},
+    {tr:"Taylor Swift",en:"Taylor Swift"},{tr:"Meryl Streep",en:"Meryl Streep"},{tr:"İbrahim Tatlıses",en:"İbrahim Tatlıses"},
+    {tr:"Adele",en:"Adele"},{tr:"Sertab Erener",en:"Sertab Erener"},{tr:"Jack Nicholson",en:"Jack Nicholson"},
+    {tr:"Bülent Ersoy",en:"Bülent Ersoy"},{tr:"Tom Hanks",en:"Tom Hanks"},{tr:"Zeki Müren",en:"Zeki Müren"},
+    {tr:"Scarlett Johansson",en:"Scarlett Johansson"},{tr:"Mabel Matiz",en:"Mabel Matiz"},{tr:"Ryan Reynolds",en:"Ryan Reynolds"},
+    {tr:"Levent Yüksel",en:"Levent Yüksel"},{tr:"Morgan Freeman",en:"Morgan Freeman"},{tr:"Can Bonomo",en:"Can Bonomo"},
+    {tr:"Jennifer Lopez",en:"Jennifer Lopez"},{tr:"Yıldız Tilbe",en:"Yıldız Tilbe"},{tr:"Dua Lipa",en:"Dua Lipa"},
+    {tr:"Oprah Winfrey",en:"Oprah Winfrey"},{tr:"Aşkın Nur Yengi",en:"Aşkın Nur Yengi"},{tr:"Will Smith",en:"Will Smith"},
+    {tr:"Nilüfer",en:"Nilüfer"},{tr:"Billie Eilish",en:"Billie Eilish"},{tr:"Chris Rock",en:"Chris Rock"},
+    {tr:"Candan Erçetin",en:"Candan Erçetin"},{tr:"Post Malone",en:"Post Malone"},{tr:"Emre Aydın",en:"Emre Aydın"},
+    {tr:"Ariana Grande",en:"Ariana Grande"},{tr:"Demet Akalın",en:"Demet Akalın"},{tr:"Bruno Mars",en:"Bruno Mars"},
+    {tr:"Brad Pitt",en:"Brad Pitt"},{tr:"Gülben Ergen",en:"Gülben Ergen"},{tr:"Margot Robbie",en:"Margot Robbie"},
+    {tr:"Nazan Öncel",en:"Nazan Öncel"},{tr:"Elton John",en:"Elton John"},{tr:"Hande Yener",en:"Hande Yener"},
+    {tr:"Idris Elba",en:"Idris Elba"},{tr:"Tan Taşçı",en:"Tan Taşçı"},{tr:"Kylie Minogue",en:"Kylie Minogue"},
+    {tr:"Aleyna Tilki",en:"Aleyna Tilki"},{tr:"Zac Efron",en:"Zac Efron"},{tr:"Berkay",en:"Berkay"},
+    {tr:"Jeff Goldblum",en:"Jeff Goldblum"},{tr:"Gökhan Özen",en:"Gökhan Özen"},{tr:"Mariah Carey",en:"Mariah Carey"},
+    {tr:"Emre Kınay",en:"Emre Kınay"},{tr:"Viola Davis",en:"Viola Davis"},{tr:"Nicole Kidman",en:"Nicole Kidman"},
+    {tr:"Snoop Dogg",en:"Snoop Dogg"},{tr:"İzel",en:"İzel"},{tr:"Madonna",en:"Madonna"},
+    {tr:"Demet Evgar",en:"Demet Evgar"},{tr:"Drake",en:"Drake"},{tr:"Cardi B",en:"Cardi B"},
+    {tr:"Sinan Akçıl",en:"Sinan Akçıl"},{tr:"Jared Leto",en:"Jared Leto"},{tr:"Serdar Ortaç",en:"Serdar Ortaç"},
+    {tr:"Lizzo",en:"Lizzo"},{tr:"Zuhal Olcay",en:"Zuhal Olcay"},{tr:"David Beckham",en:"David Beckham"},
+    {tr:"Pınar Aylin",en:"Pınar Aylin"},{tr:"Halle Berry",en:"Halle Berry"},{tr:"Mustafa Sandal",en:"Mustafa Sandal"},
+    {tr:"Florence Welch",en:"Florence Welch"},{tr:"Simge",en:"Simge"},{tr:"John Mayer",en:"John Mayer"},
+    {tr:"Ozan Doğulu",en:"Ozan Doğulu"},{tr:"Kanye West",en:"Kanye West"},{tr:"Hüsnü Şenlendirici",en:"Hüsnü Şenlendirici"},
+    {tr:"Feridun Düzağaç",en:"Feridun Düzağaç"},{tr:"Çelik",en:"Çelik"},{tr:"Burak Doğan",en:"Burak Doğan"},
+    {tr:"Sıla Şahin",en:"Sıla Şahin"},{tr:"Bahadır Tatlıoğlu",en:"Bahadır Tatlıoğlu"},{tr:"Demi Moore",en:"Demi Moore"},
+    {tr:"Ferhat Göçer",en:"Ferhat Göçer"},{tr:"Sergen Yalçın",en:"Sergen Yalçın"}
+  ],
+  nerede: [
+    {tr:"evde",en:"at home"},{tr:"ofiste",en:"at the office"},{tr:"ormanda",en:"in the forest"},
+    {tr:"İstanbul'da",en:"in Istanbul"},{tr:"plajda",en:"at the beach"},{tr:"mutfakta",en:"in the kitchen"},
+    {tr:"Ankara'da",en:"in Ankara"},{tr:"dağda",en:"on the mountain"},{tr:"markette",en:"at the supermarket"},
+    {tr:"bodrum katta",en:"in the basement"},{tr:"banyoda",en:"in the bathroom"},{tr:"Kapadokya'da",en:"in Cappadocia"},
+    {tr:"parkta",en:"in the park"},{tr:"havuzda",en:"in the pool"},{tr:"çatıda",en:"on the roof"},
+    {tr:"sahilde",en:"on the coast"},{tr:"Ege'de",en:"in the Aegean"},{tr:"garajda",en:"in the garage"},
+    {tr:"balkonda",en:"on the balcony"},{tr:"Mardin'de",en:"in Mardin"},{tr:"kütüphanede",en:"in the library"},
+    {tr:"spor salonunda",en:"at the gym"},{tr:"otobüste",en:"on the bus"},{tr:"karavanda",en:"in the caravan"},
+    {tr:"çadırda",en:"in the tent"},{tr:"İzmir'de",en:"in İzmir"},{tr:"gözlemevinde",en:"at the observatory"},
+    {tr:"tünelde",en:"in the tunnel"},{tr:"kulede",en:"in the tower"},{tr:"Boğaz'da",en:"on the Bosphorus"},
+    {tr:"köyde",en:"in the village"},{tr:"müzede",en:"at the museum"},{tr:"uçakta",en:"on the plane"},
+    {tr:"Trabzon'da",en:"in Trabzon"},{tr:"teknede",en:"on the boat"},{tr:"mağarada",en:"in the cave"},
+    {tr:"metroda",en:"on the metro"},{tr:"Antalya'da",en:"in Antalya"},{tr:"kulübede",en:"in the hut"},
+    {tr:"kumsalda",en:"on the sandy beach"},{tr:"restoranda",en:"at the restaurant"},{tr:"yatakta",en:"in bed"},
+    {tr:"Bursa'da",en:"in Bursa"},{tr:"sinemada",en:"at the cinema"},{tr:"çölde",en:"in the desert"},
+    {tr:"hastanede",en:"at the hospital"},{tr:"Eskişehir'de",en:"in Eskişehir"},{tr:"arenada",en:"in the arena"},
+    {tr:"mahzende",en:"in the cellar"},{tr:"tren istasyonunda",en:"at the train station"},{tr:"hapishanede",en:"in prison"},
+    {tr:"buz sahasında",en:"on the ice rink"},{tr:"stadyumda",en:"at the stadium"},{tr:"çiftlikte",en:"on the farm"},
+    {tr:"Üsküdar'da",en:"in Üsküdar"},{tr:"konser salonunda",en:"at the concert hall"},{tr:"bahçede",en:"in the garden"},
+    {tr:"Boğaz köprüsünde",en:"on the Bosphorus Bridge"},{tr:"deniz fenerinde",en:"at the lighthouse"},{tr:"Fethiye'de",en:"in Fethiye"},
+    {tr:"piknikte",en:"at the picnic"},{tr:"eğlence parkında",en:"at the amusement park"},{tr:"tiyatroda",en:"at the theatre"},
+    {tr:"Konya'da",en:"in Konya"},{tr:"labirentte",en:"in the labyrinth"},{tr:"Balıkesir'de",en:"in Balıkesir"},
+    {tr:"camide",en:"at the mosque"},{tr:"mağazada",en:"at the store"},{tr:"Çeşme'de",en:"in Çeşme"},
+    {tr:"adada",en:"on the island"},{tr:"fabrikada",en:"at the factory"},{tr:"otel odasında",en:"in the hotel room"},
+    {tr:"uzayda",en:"in space"},{tr:"Galata Kulesi'nde",en:"at Galata Tower"},{tr:"çamaşırhanede",en:"at the laundromat"},
+    {tr:"serada",en:"in the greenhouse"},{tr:"Şirince'de",en:"in Şirince"},{tr:"Beşiktaş'ta",en:"in Beşiktaş"},
+    {tr:"sualtında",en:"underwater"},{tr:"Alaçatı'da",en:"in Alaçatı"},{tr:"Pamukkale'de",en:"in Pamukkale"},
+    {tr:"köprü altında",en:"under the bridge"},{tr:"otoparkta",en:"in the car park"},{tr:"Niğde'de",en:"in Niğde"},
+    {tr:"çatı katında",en:"in the penthouse"},{tr:"Kapalı Çarşı'da",en:"at the Grand Bazaar"},
+    {tr:"Akdeniz'de",en:"in the Mediterranean"},{tr:"Karadeniz'de",en:"in the Black Sea"},
+    {tr:"terk edilmiş fabrikada",en:"in an abandoned factory"},{tr:"orman kabininde",en:"in a forest cabin"},
+    {tr:"kargo gemisinde",en:"on a cargo ship"},{tr:"yüksek binada",en:"in a skyscraper"},
+    {tr:"doktor muayenehanesinde",en:"at the doctor's office"},{tr:"Mardin'in sokaklarında",en:"in the streets of Mardin"}
+  ],
+  nezaman: [
+    {tr:"her sabah",en:"every morning"},{tr:"bu yıl",en:"this year"},{tr:"gece yarısı",en:"at midnight"},
+    {tr:"saat 2'de",en:"at 2 o'clock"},{tr:"her Cuma",en:"every Friday"},{tr:"şu an",en:"right now"},
+    {tr:"geçen hafta",en:"last week"},{tr:"her yaz",en:"every summer"},{tr:"saat 6'da",en:"at 6 o'clock"},
+    {tr:"Ramazan'da",en:"during Ramadan"},{tr:"her ay",en:"every month"},{tr:"sabahın köründe",en:"at the crack of dawn"},
+    {tr:"bayramda",en:"on the holiday"},{tr:"bu gece",en:"tonight"},{tr:"Pazar sabahı",en:"Sunday morning"},
+    {tr:"10 yıl önce",en:"10 years ago"},{tr:"her akşam yemeğinde",en:"at every dinner"},{tr:"öğleden sonra",en:"in the afternoon"},
+    {tr:"tatilde",en:"on holiday"},{tr:"ilk karşılaştıklarında",en:"when they first met"},{tr:"gün batımında",en:"at sunset"},
+    {tr:"Pazartesi sabahı",en:"Monday morning"},{tr:"her kışın",en:"every winter"},{tr:"bu sabah",en:"this morning"},
+    {tr:"öğle arasında",en:"at lunch break"},{tr:"Cumartesi akşamı",en:"Saturday evening"},{tr:"uyumadan önce",en:"before sleeping"},
+    {tr:"her doğum gününde",en:"at every birthday"},{tr:"bütün gece",en:"all night long"},{tr:"Yeni Yıl'da",en:"on New Year's"},
+    {tr:"Anneler Günü'nde",en:"on Mother's Day"},{tr:"sabah 5'te",en:"at 5 in the morning"},{tr:"her hafta sonu",en:"every weekend"},
+    {tr:"sınav gecesi",en:"on exam night"},{tr:"uçuşta",en:"during the flight"},{tr:"kriz anında",en:"at a moment of crisis"},
+    {tr:"Çarşamba günleri",en:"on Wednesdays"},{tr:"konserde",en:"at a concert"},{tr:"tam da filmin ortasında",en:"right in the middle of the film"},
+    {tr:"her hafta",en:"every week"},{tr:"Noel'de",en:"at Christmas"},{tr:"mehtaplı gecede",en:"on a moonlit night"},
+    {tr:"yüksek sezonda",en:"in high season"},{tr:"çocukken",en:"as a child"},{tr:"son dakikada",en:"at the last minute"},
+    {tr:"Sevgililer Günü'nde",en:"on Valentine's Day"},{tr:"her gece yarısı",en:"every midnight"},{tr:"fırtına sırasında",en:"during a storm"},
+    {tr:"o an",en:"at that very moment"},{tr:"tatil sabahı",en:"on a holiday morning"},{tr:"kış gecesi",en:"on a winter night"},
+    {tr:"fatura gelince",en:"when the bill arrives"},{tr:"ilk buluşmada",en:"on the first date"},{tr:"Perşembe öğleden sonra",en:"Thursday afternoon"},
+    {tr:"yağmurda",en:"in the rain"},{tr:"her Pazartesi sabahı",en:"every Monday morning"},{tr:"düğünde",en:"at a wedding"},
+    {tr:"beklenmedik anda",en:"at an unexpected moment"},{tr:"depremden sonra",en:"after the earthquake"},
+    {tr:"ezan sesinde",en:"at the call to prayer"},{tr:"Bayram sabahı",en:"on the morning of Bayram"},
+    {tr:"yangın çıkınca",en:"when the fire breaks out"},{tr:"ikinci çayda",en:"at the second cup of tea"},
+    {tr:"sabah rutininde",en:"during the morning routine"},{tr:"maç finalinde",en:"at the match final"},
+    {tr:"saat tam 12'de",en:"at exactly 12 o'clock"},{tr:"uyanır uyanmaz",en:"as soon as waking up"},
+    {tr:"sınavdan sonra",en:"after the exam"},{tr:"her Cuma akşamı",en:"every Friday evening"},
+    {tr:"özel bir günde",en:"on a special day"},{tr:"geceyarısı koşusunda",en:"on a midnight run"},
+    {tr:"sonbahar başında",en:"at the start of autumn"},{tr:"tatil sonunda",en:"at the end of the holiday"},
+    {tr:"her ay başında",en:"at the start of every month"},{tr:"o macera sırasında",en:"during that adventure"},
+    {tr:"hasatta",en:"during the harvest"},{tr:"rüzgarlı günde",en:"on a windy day"},
+    {tr:"konuşma ortasında",en:"mid-conversation"},{tr:"spor müsabakasında",en:"at a sports competition"},
+    {tr:"kış tatilinde",en:"during winter break"},{tr:"saat 3.47'de",en:"at 3:47"},
+    {tr:"uykusuzlukta",en:"during sleeplessness"},{tr:"doğumu sırasında",en:"during the birth"},
+    {tr:"o özel gecede",en:"on that special night"},{tr:"hasat zamanında",en:"at harvest time"}
+  ],
+  neyapiyor: [
+    {tr:"kavga ediyor",en:"is fighting"},{tr:"dans ediyor",en:"is dancing"},{tr:"sohbet ediyor",en:"is chatting"},
+    {tr:"öpüşüyor",en:"is kissing"},{tr:"tokalaşıyor",en:"is shaking hands"},{tr:"yarışıyor",en:"is competing"},
+    {tr:"kucaklaşıyor",en:"is hugging"},{tr:"takılıyor",en:"is hanging out"},{tr:"fısıldaşıyor",en:"is whispering"},
+    {tr:"selfie çekiyor",en:"is taking a selfie"},{tr:"el ele tutuşuyor",en:"is holding hands"},
+    {tr:"birlikte yemek yiyor",en:"is eating together"},{tr:"aynı şarkıyı söylüyor",en:"is singing the same song"},
+    {tr:"güreşiyor",en:"is wrestling"},{tr:"birlikte koşuyor",en:"is running together"},
+    {tr:"dedikodu yapıyor",en:"is gossiping"},{tr:"tartışıyor",en:"is arguing"},
+    {tr:"birlikte ağlıyor",en:"is crying together"},{tr:"birlikte güldüyor",en:"is laughing together"},
+    {tr:"oyun oynuyor",en:"is playing a game"},{tr:"dans yarışmasına giriyor",en:"is entering a dance contest"},
+    {tr:"birlikte yemek pişiriyor",en:"is cooking together"},{tr:"sır paylaşıyor",en:"is sharing a secret"},
+    {tr:"küs oturuyor",en:"is giving the silent treatment"},{tr:"karşılıklı bakıyor",en:"is staring at each other"},
+    {tr:"randevuya gidiyor",en:"is going on a date"},{tr:"birlikte spor yapıyor",en:"is working out together"},
+    {tr:"birlikte kayıyor",en:"is skating together"},{tr:"el sıkışıyor",en:"is shaking hands on a deal"},
+    {tr:"birlikte dans öğreniyor",en:"is learning to dance together"},{tr:"aynı yatakta uyuyor",en:"is sleeping in the same bed"},
+    {tr:"kavuşuyor",en:"is reuniting"},{tr:"birbirini izliyor",en:"is watching each other"},
+    {tr:"birlikte film izliyor",en:"is watching a film together"},{tr:"birlikte maç izliyor",en:"is watching a match together"},
+    {tr:"birbirini kovalıyor",en:"is chasing each other"},{tr:"birlikte tatile gidiyor",en:"is going on holiday together"},
+    {tr:"birlikte bisiklet sürüyor",en:"is cycling together"},{tr:"barışıyor",en:"is making up"},
+    {tr:"vedalaşıyor",en:"is saying goodbye"},{tr:"birlikte fotoğraf çekiyor",en:"is taking photos together"},
+    {tr:"aynı şarkıya dans ediyor",en:"is dancing to the same song"},{tr:"yarışa giriyor",en:"is entering a race"},
+    {tr:"birbirini takip ediyor",en:"is following each other"},{tr:"birlikte şarkı söylüyor",en:"is singing together"},
+    {tr:"birlikte keşfe çıkıyor",en:"is going exploring together"},{tr:"birlikte yüzüyor",en:"is swimming together"},
+    {tr:"sarılıyor",en:"is embracing"},{tr:"birbirine bakıyor",en:"is gazing at each other"},
+    {tr:"birlikte ders çalışıyor",en:"is studying together"},{tr:"birlikte plan yapıyor",en:"is making plans together"},
+    {tr:"birlikte oturuyor",en:"is sitting together"},{tr:"birlikte yürüyüşe çıkıyor",en:"is going for a walk together"},
+    {tr:"birlikte çay içiyor",en:"is drinking tea together"},{tr:"birlikte kahve içiyor",en:"is drinking coffee together"},
+    {tr:"aynı kitabı okuyor",en:"is reading the same book"},{tr:"birlikte alışveriş yapıyor",en:"is shopping together"},
+    {tr:"aynı şeyi düşünüyor",en:"is thinking the same thing"},{tr:"birbirini kıskandırıyor",en:"is making each other jealous"},
+    {tr:"birlikte doğa yürüyüşü yapıyor",en:"is hiking together"},{tr:"birlikte pasta yapıyor",en:"is baking a cake together"},
+    {tr:"kapışıyor",en:"is clashing"},{tr:"birlikte hayvan besliyor",en:"is feeding animals together"},
+    {tr:"aynı masada oturuyor",en:"is sitting at the same table"},{tr:"sürpriz yapıyor",en:"is planning a surprise"},
+    {tr:"birbirini kandırmaya çalışıyor",en:"is trying to trick each other"},{tr:"aynı arabada gidiyor",en:"is riding in the same car"},
+    {tr:"birlikte egzersiz yapıyor",en:"is exercising together"},{tr:"birlikte müzik dinliyor",en:"is listening to music together"},
+    {tr:"birlikte saçmalıyor",en:"is being silly together"},{tr:"birbirini şaşırtıyor",en:"is surprising each other"},
+    {tr:"birlikte yoga yapıyor",en:"is doing yoga together"},{tr:"birlikte tırmanıyor",en:"is climbing together"},
+    {tr:"aynı anda güldürüyor",en:"is cracking each other up"},{tr:"birlikte balık tutuyor",en:"is fishing together"},
+    {tr:"karşılıklı oturmuş susuyor",en:"is sitting across in silence"},{tr:"birlikte seyahat planlıyor",en:"is planning a trip together"},
+    {tr:"birlikte müzik yapıyor",en:"is making music together"},{tr:"birbirine şarkı söylüyor",en:"is singing to each other"},
+    {tr:"aynı şeye gülüyor",en:"is laughing at the same thing"},{tr:"birlikte hayal kuruyor",en:"is daydreaming together"},
+    {tr:"birbirini öpüyor",en:"is kissing each other"},{tr:"dans pistinde karşılaşıyor",en:"is meeting on the dance floor"},
+    {tr:"birlikte zıplıyor",en:"is jumping together"},{tr:"birbirini dinliyor",en:"is listening to each other"},
+    {tr:"birlikte şaşırıyor",en:"is being amazed together"},{tr:"birlikte gülüp ağlıyor",en:"is laughing and crying together"},
+    {tr:"aynı tabaktan yiyor",en:"is eating from the same plate"},{tr:"birlikte şampanya açıyor",en:"is opening champagne together"},
+    {tr:"omuz omuza duruyor",en:"is standing shoulder to shoulder"},{tr:"birbiriyle yarışıyor",en:"is competing against each other"},
+    {tr:"birlikte özür diliyor",en:"is apologizing together"},{tr:"aynı anda ağlıyor",en:"is crying at the same time"},
+    {tr:"birlikte dedektiflik oynuyor",en:"is playing detective together"}
+  ]
+};
+
+const state = { kim: null, kiminle: null, nerede: null, nezaman: null, neyapiyor: null };
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function draw(cat) {
+  if (cat === 'kiminle') {
+    const p = pick(pools.kim);
+    state[cat] = { tr: p.tr + ' ile', en: 'with ' + p.en };
+  } else {
+    state[cat] = pick(pools[cat]);
+  }
+  document.querySelector(`[data-cat="${cat}"]`).classList.add('active');
+  renderResults();
+}
+
+function drawAll() {
+  ['kim','kiminle','nerede','nezaman','neyapiyor'].forEach(draw);
+}
+
+function resetAll() {
+  ['kim','kiminle','nerede','nezaman','neyapiyor'].forEach(c => { state[c] = null; });
+  document.querySelectorAll('.q-btn').forEach(b => b.classList.remove('active'));
+  renderResults();
+}
+
+function renderResults() {
+  const chips = document.getElementById('chips');
+  const placeholder = document.getElementById('placeholder');
+  const sentence = document.getElementById('sentence');
+  const keys = ['kim','kiminle','nerede','nezaman','neyapiyor'];
+  const filled = keys.filter(k => state[k]);
+
+  if (filled.length === 0) {
+    placeholder.style.display = '';
+    chips.style.display = 'none';
+    sentence.style.display = 'none';
+    return;
+  }
+
+  placeholder.style.display = 'none';
+  chips.style.display = 'flex';
+
+  chips.innerHTML = filled.map((k, i) => {
+    const s = state[k];
+    return `
+      <div class="chip-wrap spin-anim">
+        <span class="chip" data-cat="${k}">${s.tr}</span>
+        <span class="chip-tr">${s.en}</span>
+      </div>
+      ${i < filled.length - 1 ? '<span class="sep">·</span>' : ''}
+    `;
+  }).join('');
+
+  if (filled.length === 5) {
+    sentence.style.display = 'block';
+    const tr = `${state.kim.tr}, ${state.kiminle.tr} ${state.nerede.tr} ${state.nezaman.tr} ${state.neyapiyor.tr}.`;
+    const en = `${state.kim.en} ${state.neyapiyor.en} ${state.kiminle.en} ${state.nerede.en} ${state.nezaman.en}.`;
+    sentence.innerHTML = `<div>${tr}</div><div class="sentence-en">${en}</div>`;
+  } else {
+    sentence.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>
