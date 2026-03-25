@@ -167,8 +167,20 @@
       font-weight: 400;
       color: #888;
       margin-top: 4px;
+      line-height: 2;
     }
 
+    .sc-kim       { color: #185FA5; font-weight: 700; }
+    .sc-kiminle   { color: #0F6E56; font-weight: 700; }
+    .sc-nerede    { color: #993C1D; font-weight: 700; }
+    .sc-nezaman   { color: #854F0B; font-weight: 700; }
+    .sc-neyapiyor { color: #993556; font-weight: 700; }
+
+    .se-kim       { background: #E6F1FB; color: #185FA5; padding: 2px 8px; border-radius: 99px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .se-kiminle   { background: #E1F5EE; color: #0F6E56; padding: 2px 8px; border-radius: 99px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .se-nerede    { background: #FAECE7; color: #993C1D; padding: 2px 8px; border-radius: 99px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .se-nezaman   { background: #FAEEDA; color: #854F0B; padding: 2px 8px; border-radius: 99px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .se-neyapiyor { background: #FBEAF0; color: #993556; padding: 2px 8px; border-radius: 99px; font-size: 12px; font-weight: 700; display: inline-block; }
     .actions {
       display: flex;
       gap: 10px;
@@ -219,7 +231,7 @@
 </head>
 <body>
 
-  <div class="brand">Turkish Academy</div>
+  <div class="brand">TURKISH ACADEMY</div>
   <h1 class="game-title">Kim Kiminle Nerede?</h1>
   <p class="game-sub">Bir soruya tıkla, rastgele bir cevap çek. Hepsini doldur!</p>
 
@@ -268,37 +280,37 @@ const pools = {
   kim: [
     {tr:"Britney Spears",en:"Britney Spears"},{tr:"Tarkan",en:"Tarkan"},{tr:"Beyoncé",en:"Beyoncé"},
     {tr:"Alperen Şengün",en:"Alperen Şengün"},{tr:"Cem Yılmaz",en:"Cem Yılmaz"},{tr:"Lady Gaga",en:"Lady Gaga"},
-    {tr:"Hülya Avşar",en:"Hülya Avşar"},{tr:"Elon Musk",en:"Elon Musk"},{tr:"Sezen Aksu",en:"Sezen Aksu"},
+    {tr:"Biggie Smalls",en:"Biggie Smalls"},{tr:"Elon Musk",en:"Elon Musk"},{tr:"Sezen Aksu",en:"Sezen Aksu"},
     {tr:"Lionel Messi",en:"Lionel Messi"},{tr:"Hadise",en:"Hadise"},{tr:"Cristiano Ronaldo",en:"Cristiano Ronaldo"},
     {tr:"Barış Manço",en:"Barış Manço"},{tr:"Shakira",en:"Shakira"},{tr:"Fatih Terim",en:"Fatih Terim"},
     {tr:"Rihanna",en:"Rihanna"},{tr:"Ajda Pekkan",en:"Ajda Pekkan"},{tr:"Keanu Reeves",en:"Keanu Reeves"},
-    {tr:"Ceylan Ertem",en:"Ceylan Ertem"},{tr:"Celine Dion",en:"Celine Dion"},{tr:"Müslüm Gürses",en:"Müslüm Gürses"},
-    {tr:"Taylor Swift",en:"Taylor Swift"},{tr:"Meryl Streep",en:"Meryl Streep"},{tr:"İbrahim Tatlıses",en:"İbrahim Tatlıses"},
+    {tr:"Katy Perry",en:"Katy Perry"},{tr:"Celine Dion",en:"Celine Dion"},{tr:"Müslüm Gürses",en:"Müslüm Gürses"},
+    {tr:"Taylor Swift",en:"Taylor Swift"},{tr:"Michael B. Jordan",en:"Michael B. Jordan"},{tr:"İbrahim Tatlıses",en:"İbrahim Tatlıses"},
     {tr:"Adele",en:"Adele"},{tr:"Sertab Erener",en:"Sertab Erener"},{tr:"Jack Nicholson",en:"Jack Nicholson"},
     {tr:"Bülent Ersoy",en:"Bülent Ersoy"},{tr:"Tom Hanks",en:"Tom Hanks"},{tr:"Zeki Müren",en:"Zeki Müren"},
-    {tr:"Scarlett Johansson",en:"Scarlett Johansson"},{tr:"Mabel Matiz",en:"Mabel Matiz"},{tr:"Ryan Reynolds",en:"Ryan Reynolds"},
-    {tr:"Levent Yüksel",en:"Levent Yüksel"},{tr:"Morgan Freeman",en:"Morgan Freeman"},{tr:"Can Bonomo",en:"Can Bonomo"},
+    {tr:"Scarlett Johansson",en:"Scarlett Johansson"},{tr:"Arda Güler",en:"Arda Güler"},{tr:"Ryan Reynolds",en:"Ryan Reynolds"},
+    {tr:"Harry Styles",en:"Harry Styles"},{tr:"Morgan Freeman",en:"Morgan Freeman"},{tr:"Ed Sheeran",en:"Ed Sheeran"},
     {tr:"Jennifer Lopez",en:"Jennifer Lopez"},{tr:"Yıldız Tilbe",en:"Yıldız Tilbe"},{tr:"Dua Lipa",en:"Dua Lipa"},
-    {tr:"Oprah Winfrey",en:"Oprah Winfrey"},{tr:"Aşkın Nur Yengi",en:"Aşkın Nur Yengi"},{tr:"Will Smith",en:"Will Smith"},
-    {tr:"Nilüfer",en:"Nilüfer"},{tr:"Billie Eilish",en:"Billie Eilish"},{tr:"Chris Rock",en:"Chris Rock"},
-    {tr:"Candan Erçetin",en:"Candan Erçetin"},{tr:"Post Malone",en:"Post Malone"},{tr:"Emre Aydın",en:"Emre Aydın"},
-    {tr:"Ariana Grande",en:"Ariana Grande"},{tr:"Demet Akalın",en:"Demet Akalın"},{tr:"Bruno Mars",en:"Bruno Mars"},
-    {tr:"Brad Pitt",en:"Brad Pitt"},{tr:"Gülben Ergen",en:"Gülben Ergen"},{tr:"Margot Robbie",en:"Margot Robbie"},
-    {tr:"Nazan Öncel",en:"Nazan Öncel"},{tr:"Elton John",en:"Elton John"},{tr:"Hande Yener",en:"Hande Yener"},
-    {tr:"Idris Elba",en:"Idris Elba"},{tr:"Tan Taşçı",en:"Tan Taşçı"},{tr:"Kylie Minogue",en:"Kylie Minogue"},
-    {tr:"Aleyna Tilki",en:"Aleyna Tilki"},{tr:"Zac Efron",en:"Zac Efron"},{tr:"Berkay",en:"Berkay"},
-    {tr:"Jeff Goldblum",en:"Jeff Goldblum"},{tr:"Gökhan Özen",en:"Gökhan Özen"},{tr:"Mariah Carey",en:"Mariah Carey"},
-    {tr:"Emre Kınay",en:"Emre Kınay"},{tr:"Viola Davis",en:"Viola Davis"},{tr:"Nicole Kidman",en:"Nicole Kidman"},
-    {tr:"Snoop Dogg",en:"Snoop Dogg"},{tr:"İzel",en:"İzel"},{tr:"Madonna",en:"Madonna"},
-    {tr:"Demet Evgar",en:"Demet Evgar"},{tr:"Drake",en:"Drake"},{tr:"Cardi B",en:"Cardi B"},
-    {tr:"Sinan Akçıl",en:"Sinan Akçıl"},{tr:"Jared Leto",en:"Jared Leto"},{tr:"Serdar Ortaç",en:"Serdar Ortaç"},
-    {tr:"Lizzo",en:"Lizzo"},{tr:"Zuhal Olcay",en:"Zuhal Olcay"},{tr:"David Beckham",en:"David Beckham"},
-    {tr:"Pınar Aylin",en:"Pınar Aylin"},{tr:"Halle Berry",en:"Halle Berry"},{tr:"Mustafa Sandal",en:"Mustafa Sandal"},
-    {tr:"Florence Welch",en:"Florence Welch"},{tr:"Simge",en:"Simge"},{tr:"John Mayer",en:"John Mayer"},
-    {tr:"Ozan Doğulu",en:"Ozan Doğulu"},{tr:"Kanye West",en:"Kanye West"},{tr:"Hüsnü Şenlendirici",en:"Hüsnü Şenlendirici"},
-    {tr:"Feridun Düzağaç",en:"Feridun Düzağaç"},{tr:"Çelik",en:"Çelik"},{tr:"Burak Doğan",en:"Burak Doğan"},
-    {tr:"Sıla Şahin",en:"Sıla Şahin"},{tr:"Bahadır Tatlıoğlu",en:"Bahadır Tatlıoğlu"},{tr:"Demi Moore",en:"Demi Moore"},
-    {tr:"Ferhat Göçer",en:"Ferhat Göçer"},{tr:"Sergen Yalçın",en:"Sergen Yalçın"}
+    {tr:"Oprah Winfrey",en:"Oprah Winfrey"},{tr:"Albert Einstein",en:"Albert Einstein"},{tr:"Will Smith",en:"Will Smith"},
+    {tr:"Freddie Mercury",en:"Freddie Mercury"},{tr:"Billie Eilish",en:"Billie Eilish"},{tr:"Chris Rock",en:"Chris Rock"},
+    {tr:"Kim Kardashian",en:"Kim Kardashian"},{tr:"The Weeknd",en:"The Weeknd"},{tr:"Justin Bieber",en:"Justin Bieber"},
+    {tr:"Ariana Grande",en:"Ariana Grande"},{tr:"Johnny Depp",en:"Johnny Depp"},{tr:"Bruno Mars",en:"Bruno Mars"},
+    {tr:"Brad Pitt",en:"Brad Pitt"},{tr:"Mike Tyson",en:"Mike Tyson"},{tr:"Margot Robbie",en:"Margot Robbie"},
+    {tr:"Nicki Minaj",en:"Nicki Minaj"},{tr:"Elton John",en:"Elton John"},{tr:"Thomas Edison",en:"Thomas Edison"},
+    {tr:"Dwayne Johnson",en:"Dwayne Johnson"},{tr:"Bad Bunny",en:"Bad Bunny"},{tr:"Kylie Minogue",en:"Kylie Minogue"},
+    {tr:"Aleyna Tilki",en:"Aleyna Tilki"},{tr:"Timothée Chalamet",en:"Timothée Chalamet"},{tr:"Mr. Beast",en:"Mr. Beast"},
+    {tr:"Leonardo DiCaprio",en:"Leonardo DiCaprio"},{tr:"Chris Hemsworth",en:"Chris Hemsworth"},{tr:"Whitney Houston",en:"Whitney Houston"},
+    {tr:"Steve Jobs",en:"Steve Jobs"},{tr:"Serena Williams",en:"Serena Williams"},{tr:"Nicole Kidman",en:"Nicole Kidman"},
+    {tr:"Snoop Dogg",en:"Snoop Dogg"},{tr:"Marie Curie",en:"Marie Curie"},{tr:"Madonna",en:"Madonna"},
+    {tr:"Mark Zuckerberg",en:"Mark Zuckerberg"},{tr:"Drake",en:"Drake"},{tr:"Cardi B",en:"Cardi B"},
+    {tr:"Pharrell Williams",en:"Pharrell Williams"},{tr:"Jackie Chan",en:"Jackie Chan"},{tr:"Serdar Ortaç",en:"Serdar Ortaç"},
+    {tr:"LeBron James",en:"LeBron James"},{tr:"Tina Turner",en:"Tina Turner"},{tr:"David Beckham",en:"David Beckham"},
+    {tr:"Sofia Vergara",en:"Sofia Vergara"},{tr:"Angelina Jolie",en:"Angelina Jolie"},{tr:"Neymar",en:"Neymar"},
+    {tr:"Nikola Tesla",en:"Nikola Tesla"},{tr:"Hande Erçel",en:"Hande Erçel"},{tr:"Mozart",en:"Mozart"},
+    {tr:"Muhammed Ali",en:"Muhammed Ali"},{tr:"Kanye West",en:"Kanye West"},{tr:"Zlatan Ibrahimović",en:"Zlatan Ibrahimović"},
+    {tr:"Logan Paul",en:"Logan Paul"},{tr:"iShowSpeed",en:"iShowSpeed"},{tr:"Bob Marley",en:"Bob Marley"},
+    {tr:"Greta Thunberg",en:"Greta Thunberg"},{tr:"Tiger Woods",en:"Tiger Woods"},{tr:"Can Yaman",en:"Can Yaman"},
+    {tr:"Lamine Yamal",en:"Lamine Yamal"},{tr:"Kylie Jenner",en:"Kylie Jenner"}
   ],
   nerede: [
     {tr:"evde",en:"at home"},{tr:"ofiste",en:"at the office"},{tr:"ormanda",en:"in the forest"},
@@ -306,117 +318,129 @@ const pools = {
     {tr:"Ankara'da",en:"in Ankara"},{tr:"dağda",en:"on the mountain"},{tr:"markette",en:"at the supermarket"},
     {tr:"bodrum katta",en:"in the basement"},{tr:"banyoda",en:"in the bathroom"},{tr:"Kapadokya'da",en:"in Cappadocia"},
     {tr:"parkta",en:"in the park"},{tr:"havuzda",en:"in the pool"},{tr:"çatıda",en:"on the roof"},
-    {tr:"sahilde",en:"on the coast"},{tr:"Ege'de",en:"in the Aegean"},{tr:"garajda",en:"in the garage"},
-    {tr:"balkonda",en:"on the balcony"},{tr:"Mardin'de",en:"in Mardin"},{tr:"kütüphanede",en:"in the library"},
-    {tr:"spor salonunda",en:"at the gym"},{tr:"otobüste",en:"on the bus"},{tr:"karavanda",en:"in the caravan"},
-    {tr:"çadırda",en:"in the tent"},{tr:"İzmir'de",en:"in İzmir"},{tr:"gözlemevinde",en:"at the observatory"},
-    {tr:"tünelde",en:"in the tunnel"},{tr:"kulede",en:"in the tower"},{tr:"Boğaz'da",en:"on the Bosphorus"},
-    {tr:"köyde",en:"in the village"},{tr:"müzede",en:"at the museum"},{tr:"uçakta",en:"on the plane"},
-    {tr:"Trabzon'da",en:"in Trabzon"},{tr:"teknede",en:"on the boat"},{tr:"mağarada",en:"in the cave"},
-    {tr:"metroda",en:"on the metro"},{tr:"Antalya'da",en:"in Antalya"},{tr:"kulübede",en:"in the hut"},
-    {tr:"kumsalda",en:"on the sandy beach"},{tr:"restoranda",en:"at the restaurant"},{tr:"yatakta",en:"in bed"},
-    {tr:"Bursa'da",en:"in Bursa"},{tr:"sinemada",en:"at the cinema"},{tr:"çölde",en:"in the desert"},
-    {tr:"hastanede",en:"at the hospital"},{tr:"Eskişehir'de",en:"in Eskişehir"},{tr:"arenada",en:"in the arena"},
-    {tr:"mahzende",en:"in the cellar"},{tr:"tren istasyonunda",en:"at the train station"},{tr:"hapishanede",en:"in prison"},
+    {tr:"sahilde",en:"on the coast"},{tr:"garajda",en:"in the garage"},{tr:"balkonda",en:"on the balcony"},
+    {tr:"kütüphanede",en:"in the library"},{tr:"spor salonunda",en:"at the gym"},{tr:"otobüste",en:"on the bus"},
+    {tr:"karavanda",en:"in the caravan"},{tr:"çadırda",en:"in the tent"},{tr:"İzmir'de",en:"in İzmir"},
+    {tr:"tünelde",en:"in the tunnel"},{tr:"Boğaz'da",en:"on the Bosphorus"},{tr:"köyde",en:"in the village"},
+    {tr:"müzede",en:"at the museum"},{tr:"uçakta",en:"on the plane"},{tr:"Trabzon'da",en:"in Trabzon"},
+    {tr:"teknede",en:"on the boat"},{tr:"mağarada",en:"in the cave"},{tr:"metroda",en:"on the metro"},
+    {tr:"Antalya'da",en:"in Antalya"},{tr:"kulübede",en:"in the hut"},{tr:"kumsalda",en:"on the sandy beach"},
+    {tr:"restoranda",en:"at the restaurant"},{tr:"yatakta",en:"in bed"},{tr:"Bursa'da",en:"in Bursa"},
+    {tr:"sinemada",en:"at the cinema"},{tr:"çölde",en:"in the desert"},{tr:"hastanede",en:"at the hospital"},
+    {tr:"Eskişehir'de",en:"in Eskişehir"},{tr:"arenada",en:"in the arena"},{tr:"mahzende",en:"in the cellar"},
+    {tr:"tren istasyonunda",en:"at the train station"},{tr:"hapishanede",en:"in prison"},
     {tr:"buz sahasında",en:"on the ice rink"},{tr:"stadyumda",en:"at the stadium"},{tr:"çiftlikte",en:"on the farm"},
     {tr:"Üsküdar'da",en:"in Üsküdar"},{tr:"konser salonunda",en:"at the concert hall"},{tr:"bahçede",en:"in the garden"},
-    {tr:"Boğaz köprüsünde",en:"on the Bosphorus Bridge"},{tr:"deniz fenerinde",en:"at the lighthouse"},{tr:"Fethiye'de",en:"in Fethiye"},
-    {tr:"piknikte",en:"at the picnic"},{tr:"eğlence parkında",en:"at the amusement park"},{tr:"tiyatroda",en:"at the theatre"},
-    {tr:"Konya'da",en:"in Konya"},{tr:"labirentte",en:"in the labyrinth"},{tr:"Balıkesir'de",en:"in Balıkesir"},
+    {tr:"Boğaz köprüsünde",en:"on the Bosphorus Bridge"},{tr:"deniz fenerinde",en:"at the lighthouse"},
+    {tr:"Fethiye'de",en:"in Fethiye"},{tr:"piknikte",en:"at the picnic"},{tr:"eğlence parkında",en:"at the amusement park"},
+    {tr:"tiyatroda",en:"at the theatre"},{tr:"Konya'da",en:"in Konya"},{tr:"labirentte",en:"in the labyrinth"},
     {tr:"camide",en:"at the mosque"},{tr:"mağazada",en:"at the store"},{tr:"Çeşme'de",en:"in Çeşme"},
     {tr:"adada",en:"on the island"},{tr:"fabrikada",en:"at the factory"},{tr:"otel odasında",en:"in the hotel room"},
     {tr:"uzayda",en:"in space"},{tr:"Galata Kulesi'nde",en:"at Galata Tower"},{tr:"çamaşırhanede",en:"at the laundromat"},
     {tr:"serada",en:"in the greenhouse"},{tr:"Şirince'de",en:"in Şirince"},{tr:"Beşiktaş'ta",en:"in Beşiktaş"},
-    {tr:"sualtında",en:"underwater"},{tr:"Alaçatı'da",en:"in Alaçatı"},{tr:"Pamukkale'de",en:"in Pamukkale"},
-    {tr:"köprü altında",en:"under the bridge"},{tr:"otoparkta",en:"in the car park"},{tr:"Niğde'de",en:"in Niğde"},
-    {tr:"çatı katında",en:"in the penthouse"},{tr:"Kapalı Çarşı'da",en:"at the Grand Bazaar"},
-    {tr:"Akdeniz'de",en:"in the Mediterranean"},{tr:"Karadeniz'de",en:"in the Black Sea"},
-    {tr:"terk edilmiş fabrikada",en:"in an abandoned factory"},{tr:"orman kabininde",en:"in a forest cabin"},
-    {tr:"kargo gemisinde",en:"on a cargo ship"},{tr:"yüksek binada",en:"in a skyscraper"},
-    {tr:"doktor muayenehanesinde",en:"at the doctor's office"},{tr:"Mardin'in sokaklarında",en:"in the streets of Mardin"}
+    {tr:"Alaçatı'da",en:"in Alaçatı"},{tr:"Pamukkale'de",en:"in Pamukkale"},{tr:"köprü altında",en:"under the bridge"},
+    {tr:"otoparkta",en:"in the car park"},{tr:"Kapalı Çarşı'da",en:"at the Grand Bazaar"},
+    {tr:"Mardin'in sokaklarında",en:"in the streets of Mardin"},{tr:"kilisede",en:"at the church"},
+    {tr:"sinagogda",en:"at the synagogue"},{tr:"kuyumcuda",en:"at the jeweller's"},{tr:"kasapta",en:"at the butcher's"},
+    {tr:"masanın altında",en:"under the table"},{tr:"tramvayda",en:"on the tram"},{tr:"kuaförde",en:"at the hairdresser's"},
+    {tr:"berberde",en:"at the barber's"},{tr:"takside",en:"in a taxi"},{tr:"caminin avlusunda",en:"in the mosque courtyard"},
+    {tr:"çarşıda",en:"at the bazaar"},{tr:"iskelede",en:"at the pier"},{tr:"köprüde",en:"on the bridge"},
+    {tr:"sahafta",en:"at the second-hand bookshop"},{tr:"çay bahçesinde",en:"at the tea garden"}
   ],
   nezaman: [
     {tr:"her sabah",en:"every morning"},{tr:"bu yıl",en:"this year"},{tr:"gece yarısı",en:"at midnight"},
     {tr:"saat 2'de",en:"at 2 o'clock"},{tr:"her Cuma",en:"every Friday"},{tr:"şu an",en:"right now"},
-    {tr:"geçen hafta",en:"last week"},{tr:"her yaz",en:"every summer"},{tr:"saat 6'da",en:"at 6 o'clock"},
-    {tr:"Ramazan'da",en:"during Ramadan"},{tr:"her ay",en:"every month"},{tr:"sabahın köründe",en:"at the crack of dawn"},
-    {tr:"bayramda",en:"on the holiday"},{tr:"bu gece",en:"tonight"},{tr:"Pazar sabahı",en:"Sunday morning"},
-    {tr:"10 yıl önce",en:"10 years ago"},{tr:"her akşam yemeğinde",en:"at every dinner"},{tr:"öğleden sonra",en:"in the afternoon"},
-    {tr:"tatilde",en:"on holiday"},{tr:"ilk karşılaştıklarında",en:"when they first met"},{tr:"gün batımında",en:"at sunset"},
-    {tr:"Pazartesi sabahı",en:"Monday morning"},{tr:"her kışın",en:"every winter"},{tr:"bu sabah",en:"this morning"},
-    {tr:"öğle arasında",en:"at lunch break"},{tr:"Cumartesi akşamı",en:"Saturday evening"},{tr:"uyumadan önce",en:"before sleeping"},
-    {tr:"her doğum gününde",en:"at every birthday"},{tr:"bütün gece",en:"all night long"},{tr:"Yeni Yıl'da",en:"on New Year's"},
-    {tr:"Anneler Günü'nde",en:"on Mother's Day"},{tr:"sabah 5'te",en:"at 5 in the morning"},{tr:"her hafta sonu",en:"every weekend"},
-    {tr:"sınav gecesi",en:"on exam night"},{tr:"uçuşta",en:"during the flight"},{tr:"kriz anında",en:"at a moment of crisis"},
-    {tr:"Çarşamba günleri",en:"on Wednesdays"},{tr:"konserde",en:"at a concert"},{tr:"tam da filmin ortasında",en:"right in the middle of the film"},
+    {tr:"her yaz",en:"every summer"},{tr:"saat 6'da",en:"at 6 o'clock"},{tr:"Ramazan'da",en:"during Ramadan"},
+    {tr:"her ay",en:"every month"},{tr:"sabahın köründe",en:"at the crack of dawn"},{tr:"bayramda",en:"on the holiday"},
+    {tr:"bu gece",en:"tonight"},{tr:"Pazar sabahı",en:"Sunday morning"},{tr:"her akşam yemeğinde",en:"at every dinner"},
+    {tr:"öğleden sonra",en:"in the afternoon"},{tr:"tatilde",en:"on holiday"},{tr:"ilk karşılaştıklarında",en:"when they first met"},
+    {tr:"gün batımında",en:"at sunset"},{tr:"Pazartesi sabahı",en:"Monday morning"},{tr:"her kış",en:"every winter"},
+    {tr:"bu sabah",en:"this morning"},{tr:"öğle arasında",en:"at lunch break"},{tr:"Cumartesi akşamı",en:"Saturday evening"},
+    {tr:"uyumadan önce",en:"before sleeping"},{tr:"her doğum gününde",en:"at every birthday"},{tr:"bütün gece",en:"all night long"},
+    {tr:"Yeni Yıl'da",en:"on New Year's"},{tr:"Anneler Günü'nde",en:"on Mother's Day"},{tr:"sabah 5'te",en:"at 5 in the morning"},
+    {tr:"her hafta sonu",en:"every weekend"},{tr:"sınav gecesi",en:"on exam night"},{tr:"kriz anında",en:"at a moment of crisis"},
+    {tr:"Çarşamba günleri",en:"on Wednesdays"},{tr:"tam da filmin ortasında",en:"right in the middle of the film"},
     {tr:"her hafta",en:"every week"},{tr:"Noel'de",en:"at Christmas"},{tr:"mehtaplı gecede",en:"on a moonlit night"},
-    {tr:"yüksek sezonda",en:"in high season"},{tr:"çocukken",en:"as a child"},{tr:"son dakikada",en:"at the last minute"},
-    {tr:"Sevgililer Günü'nde",en:"on Valentine's Day"},{tr:"her gece yarısı",en:"every midnight"},{tr:"fırtına sırasında",en:"during a storm"},
-    {tr:"o an",en:"at that very moment"},{tr:"tatil sabahı",en:"on a holiday morning"},{tr:"kış gecesi",en:"on a winter night"},
-    {tr:"fatura gelince",en:"when the bill arrives"},{tr:"ilk buluşmada",en:"on the first date"},{tr:"Perşembe öğleden sonra",en:"Thursday afternoon"},
-    {tr:"yağmurda",en:"in the rain"},{tr:"her Pazartesi sabahı",en:"every Monday morning"},{tr:"düğünde",en:"at a wedding"},
+    {tr:"son dakikada",en:"at the last minute"},{tr:"Sevgililer Günü'nde",en:"on Valentine's Day"},
+    {tr:"her gece yarısı",en:"every midnight"},{tr:"fırtına sırasında",en:"during a storm"},
+    {tr:"tatil sabahı",en:"on a holiday morning"},{tr:"kış gecesi",en:"on a winter night"},
+    {tr:"fatura gelince",en:"when the bill arrives"},{tr:"ilk buluşmada",en:"on the first date"},
+    {tr:"Perşembe öğleden sonra",en:"Thursday afternoon"},{tr:"her Pazartesi sabahı",en:"every Monday morning"},
     {tr:"beklenmedik anda",en:"at an unexpected moment"},{tr:"depremden sonra",en:"after the earthquake"},
-    {tr:"ezan sesinde",en:"at the call to prayer"},{tr:"Bayram sabahı",en:"on the morning of Bayram"},
-    {tr:"yangın çıkınca",en:"when the fire breaks out"},{tr:"ikinci çayda",en:"at the second cup of tea"},
+    {tr:"Bayram sabahı",en:"on the morning of Bayram"},{tr:"yangın çıkınca",en:"when the fire breaks out"},
     {tr:"sabah rutininde",en:"during the morning routine"},{tr:"maç finalinde",en:"at the match final"},
     {tr:"saat tam 12'de",en:"at exactly 12 o'clock"},{tr:"uyanır uyanmaz",en:"as soon as waking up"},
     {tr:"sınavdan sonra",en:"after the exam"},{tr:"her Cuma akşamı",en:"every Friday evening"},
-    {tr:"özel bir günde",en:"on a special day"},{tr:"geceyarısı koşusunda",en:"on a midnight run"},
-    {tr:"sonbahar başında",en:"at the start of autumn"},{tr:"tatil sonunda",en:"at the end of the holiday"},
-    {tr:"her ay başında",en:"at the start of every month"},{tr:"o macera sırasında",en:"during that adventure"},
-    {tr:"hasatta",en:"during the harvest"},{tr:"rüzgarlı günde",en:"on a windy day"},
-    {tr:"konuşma ortasında",en:"mid-conversation"},{tr:"spor müsabakasında",en:"at a sports competition"},
-    {tr:"kış tatilinde",en:"during winter break"},{tr:"saat 3.47'de",en:"at 3:47"},
-    {tr:"uykusuzlukta",en:"during sleeplessness"},{tr:"doğumu sırasında",en:"during the birth"},
-    {tr:"o özel gecede",en:"on that special night"},{tr:"hasat zamanında",en:"at harvest time"}
+    {tr:"özel bir günde",en:"on a special day"},{tr:"sonbahar başında",en:"at the start of autumn"},
+    {tr:"tatil sonunda",en:"at the end of the holiday"},{tr:"her ay başında",en:"at the start of every month"},
+    {tr:"konuşma ortasında",en:"mid-conversation"},{tr:"kış tatilinde",en:"during winter break"},
+    {tr:"saat 3.47'de",en:"at 3:47"},{tr:"doğumu sırasında",en:"during the birth"},
+    {tr:"o özel gecede",en:"on that special night"},{tr:"hafif uykuda",en:"in a light sleep"},
+    {tr:"her gece",en:"every night"},{tr:"her iki saatte bir",en:"every two hours"},
+    {tr:"üç günde bir",en:"every three days"},{tr:"sık sık",en:"often / frequently"},
+    {tr:"ara sıra",en:"from time to time"},{tr:"nadiren",en:"rarely"},
+    {tr:"her öğleden sonra",en:"every afternoon"},{tr:"bazen",en:"sometimes"},
+    {tr:"zaman zaman",en:"now and then"},{tr:"arada bir",en:"once in a while"},
+    {tr:"haftada bir kez",en:"once a week"},{tr:"ayda bir",en:"once a month"},
+    {tr:"her zaman",en:"always"},{tr:"uçuştan önce",en:"before the flight"},
+    {tr:"her derse gitmeden önce",en:"before every class"},{tr:"tam bu sırada",en:"right at this moment"},
+    {tr:"hiç beklemeden",en:"without any warning"},{tr:"yağmurlu bir gecede",en:"on a rainy night"}
   ],
   neyapiyor: [
     {tr:"kavga ediyor",en:"is fighting"},{tr:"dans ediyor",en:"is dancing"},{tr:"sohbet ediyor",en:"is chatting"},
-    {tr:"öpüşüyor",en:"is kissing"},{tr:"tokalaşıyor",en:"is shaking hands"},{tr:"yarışıyor",en:"is competing"},
-    {tr:"kucaklaşıyor",en:"is hugging"},{tr:"takılıyor",en:"is hanging out"},{tr:"fısıldaşıyor",en:"is whispering"},
-    {tr:"selfie çekiyor",en:"is taking a selfie"},{tr:"el ele tutuşuyor",en:"is holding hands"},
-    {tr:"birlikte yemek yiyor",en:"is eating together"},{tr:"aynı şarkıyı söylüyor",en:"is singing the same song"},
-    {tr:"güreşiyor",en:"is wrestling"},{tr:"birlikte koşuyor",en:"is running together"},
+    {tr:"öpüşüyor",en:"is kissing"},{tr:"tokalaşıyor",en:"is shaking hands"},{tr:"kucaklaşıyor",en:"is hugging"},
+    {tr:"fısıldaşıyor",en:"is whispering"},{tr:"selfie çekiyor",en:"is taking a selfie together"},
+    {tr:"el ele tutuşuyor",en:"is holding hands"},{tr:"aynı şarkıyı söylüyor",en:"is singing the same song"},
+    {tr:"güreşiyor",en:"is wrestling"},{tr:"koşu yarışı yapıyor",en:"is having a running race"},
     {tr:"dedikodu yapıyor",en:"is gossiping"},{tr:"tartışıyor",en:"is arguing"},
-    {tr:"birlikte ağlıyor",en:"is crying together"},{tr:"birlikte güldüyor",en:"is laughing together"},
-    {tr:"oyun oynuyor",en:"is playing a game"},{tr:"dans yarışmasına giriyor",en:"is entering a dance contest"},
-    {tr:"birlikte yemek pişiriyor",en:"is cooking together"},{tr:"sır paylaşıyor",en:"is sharing a secret"},
-    {tr:"küs oturuyor",en:"is giving the silent treatment"},{tr:"karşılıklı bakıyor",en:"is staring at each other"},
-    {tr:"randevuya gidiyor",en:"is going on a date"},{tr:"birlikte spor yapıyor",en:"is working out together"},
-    {tr:"birlikte kayıyor",en:"is skating together"},{tr:"el sıkışıyor",en:"is shaking hands on a deal"},
-    {tr:"birlikte dans öğreniyor",en:"is learning to dance together"},{tr:"aynı yatakta uyuyor",en:"is sleeping in the same bed"},
-    {tr:"kavuşuyor",en:"is reuniting"},{tr:"birbirini izliyor",en:"is watching each other"},
+    {tr:"birlikte ağlıyor",en:"is crying together"},{tr:"rakı içiyor",en:"is drinking rakı"},
+    {tr:"küs oturuyor",en:"is giving the silent treatment"},{tr:"süt banyosu yapıyor",en:"is taking a milk bath"},
+    {tr:"birlikte spor yapıyor",en:"is working out together"},{tr:"grafiti yapıyor",en:"is doing graffiti"},
+    {tr:"el sıkışıyor",en:"is shaking hands on a deal"},{tr:"birlikte dans öğreniyor",en:"is learning to dance together"},
+    {tr:"aynı yatakta uyuyor",en:"is sleeping in the same bed"},{tr:"kavuşuyor",en:"is reuniting"},
     {tr:"birlikte film izliyor",en:"is watching a film together"},{tr:"birlikte maç izliyor",en:"is watching a match together"},
     {tr:"birbirini kovalıyor",en:"is chasing each other"},{tr:"birlikte tatile gidiyor",en:"is going on holiday together"},
-    {tr:"birlikte bisiklet sürüyor",en:"is cycling together"},{tr:"barışıyor",en:"is making up"},
+    {tr:"protestolara katılıyor",en:"is joining protests"},{tr:"Kurtlar Vadisi izliyor",en:"is watching Kurtlar Vadisi"},
     {tr:"vedalaşıyor",en:"is saying goodbye"},{tr:"birlikte fotoğraf çekiyor",en:"is taking photos together"},
-    {tr:"aynı şarkıya dans ediyor",en:"is dancing to the same song"},{tr:"yarışa giriyor",en:"is entering a race"},
-    {tr:"birbirini takip ediyor",en:"is following each other"},{tr:"birlikte şarkı söylüyor",en:"is singing together"},
-    {tr:"birlikte keşfe çıkıyor",en:"is going exploring together"},{tr:"birlikte yüzüyor",en:"is swimming together"},
-    {tr:"sarılıyor",en:"is embracing"},{tr:"birbirine bakıyor",en:"is gazing at each other"},
-    {tr:"birlikte ders çalışıyor",en:"is studying together"},{tr:"birlikte plan yapıyor",en:"is making plans together"},
-    {tr:"birlikte oturuyor",en:"is sitting together"},{tr:"birlikte yürüyüşe çıkıyor",en:"is going for a walk together"},
-    {tr:"birlikte çay içiyor",en:"is drinking tea together"},{tr:"birlikte kahve içiyor",en:"is drinking coffee together"},
-    {tr:"aynı kitabı okuyor",en:"is reading the same book"},{tr:"birlikte alışveriş yapıyor",en:"is shopping together"},
-    {tr:"aynı şeyi düşünüyor",en:"is thinking the same thing"},{tr:"birbirini kıskandırıyor",en:"is making each other jealous"},
-    {tr:"birlikte doğa yürüyüşü yapıyor",en:"is hiking together"},{tr:"birlikte pasta yapıyor",en:"is baking a cake together"},
-    {tr:"kapışıyor",en:"is clashing"},{tr:"birlikte hayvan besliyor",en:"is feeding animals together"},
-    {tr:"aynı masada oturuyor",en:"is sitting at the same table"},{tr:"sürpriz yapıyor",en:"is planning a surprise"},
-    {tr:"birbirini kandırmaya çalışıyor",en:"is trying to trick each other"},{tr:"aynı arabada gidiyor",en:"is riding in the same car"},
-    {tr:"birlikte egzersiz yapıyor",en:"is exercising together"},{tr:"birlikte müzik dinliyor",en:"is listening to music together"},
-    {tr:"birlikte saçmalıyor",en:"is being silly together"},{tr:"birbirini şaşırtıyor",en:"is surprising each other"},
-    {tr:"birlikte yoga yapıyor",en:"is doing yoga together"},{tr:"birlikte tırmanıyor",en:"is climbing together"},
-    {tr:"aynı anda güldürüyor",en:"is cracking each other up"},{tr:"birlikte balık tutuyor",en:"is fishing together"},
-    {tr:"karşılıklı oturmuş susuyor",en:"is sitting across in silence"},{tr:"birlikte seyahat planlıyor",en:"is planning a trip together"},
-    {tr:"birlikte müzik yapıyor",en:"is making music together"},{tr:"birbirine şarkı söylüyor",en:"is singing to each other"},
-    {tr:"aynı şeye gülüyor",en:"is laughing at the same thing"},{tr:"birlikte hayal kuruyor",en:"is daydreaming together"},
-    {tr:"birbirini öpüyor",en:"is kissing each other"},{tr:"dans pistinde karşılaşıyor",en:"is meeting on the dance floor"},
-    {tr:"birlikte zıplıyor",en:"is jumping together"},{tr:"birbirini dinliyor",en:"is listening to each other"},
-    {tr:"birlikte şaşırıyor",en:"is being amazed together"},{tr:"birlikte gülüp ağlıyor",en:"is laughing and crying together"},
-    {tr:"aynı tabaktan yiyor",en:"is eating from the same plate"},{tr:"birlikte şampanya açıyor",en:"is opening champagne together"},
-    {tr:"omuz omuza duruyor",en:"is standing shoulder to shoulder"},{tr:"birbiriyle yarışıyor",en:"is competing against each other"},
-    {tr:"birlikte özür diliyor",en:"is apologizing together"},{tr:"aynı anda ağlıyor",en:"is crying at the same time"},
-    {tr:"birlikte dedektiflik oynuyor",en:"is playing detective together"}
+    {tr:"aynı şarkıya dans ediyor",en:"is dancing to the same song"},
+    {tr:"birlikte şarkı söylüyor",en:"is singing together"},{tr:"birlikte keşfe çıkıyor",en:"is going exploring together"},
+    {tr:"yıldızlara bakıyor",en:"is stargazing"},{tr:"sarılıyor",en:"is embracing"},
+    {tr:"birbirine bakıyor",en:"is gazing at each other"},{tr:"birlikte ders çalışıyor",en:"is studying together"},
+    {tr:"Can Yaman'ı övüyor",en:"is praising Can Yaman"},{tr:"birlikte kahve içiyor",en:"is drinking coffee together"},
+    {tr:"birlikte alışveriş yapıyor",en:"is shopping together"},{tr:"birlikte doğa yürüyüşü yapıyor",en:"is hiking together"},
+    {tr:"birlikte pasta yapıyor",en:"is baking a cake together"},{tr:"kapışıyor",en:"is clashing"},
+    {tr:"aynı arabada gidiyor",en:"is riding in the same car"},{tr:"birlikte egzersiz yapıyor",en:"is exercising together"},
+    {tr:"Barış Manço dinliyor",en:"is listening to Barış Manço"},{tr:"iddia oynuyor",en:"is making a bet"},
+    {tr:"birlikte balık tutuyor",en:"is fishing together"},{tr:"karşılıklı oturmuş susuyor",en:"is sitting across in silence"},
+    {tr:"birlikte seyahat planlıyor",en:"is planning a trip together"},{tr:"birlikte şampanya açıyor",en:"is opening champagne together"},
+    {tr:"omuz omuza duruyor",en:"is standing shoulder to shoulder"},{tr:"sessiz sinema oynuyor",en:"is playing silent charades"},
+    {tr:"tiktok dansı çekiyor",en:"is filming a TikTok dance"},{tr:"darbuka çalıyor",en:"is playing the darbuka"},
+    {tr:"birlikte yoga yapıyor",en:"is doing yoga together"},{tr:"yoldan geçenlere şaplak atıyor",en:"is slapping strangers on the street"},
+    {tr:"ip atlıyor",en:"is jumping rope"},{tr:"kuşlara yem atıyor",en:"is feeding birds"},
+    {tr:"aynı tabaktan iskender yiyor",en:"is eating İskender from the same plate"},
+    {tr:"martılara simit atıyor",en:"is throwing simit to seagulls"},
+    {tr:"güneşleniyor",en:"is sunbathing together"},{tr:"birlikte banka soyuyor",en:"is robbing a bank together"},
+    {tr:"poker oynuyor",en:"is playing poker"},{tr:"satranç oynuyor",en:"is playing chess"},
+    {tr:"bilek güreşi yapıyor",en:"is arm wrestling"},
+    {tr:"romantik bir şekilde bakışıyor",en:"is gazing at each other romantically"},
+    {tr:"hain planlar yapıyor",en:"is making evil plans together"},
+    {tr:"aynaya bakıp gülüyor",en:"is laughing at themselves in the mirror"},
+    {tr:"sapanla kuş avlıyor",en:"is hunting birds with a slingshot"},
+    {tr:"rap savaşı yapıyor",en:"is having a rap battle"},{tr:"osuruyor",en:"is farting"},
+    {tr:"şakalaşıyor",en:"is joking around"},{tr:"Minecraft oynuyor",en:"is playing Minecraft"},
+    {tr:"baklava yiyor",en:"is eating baklava"},{tr:"kaydıraktan kayıyor",en:"is going down a slide"},
+    {tr:"Nickelback dinliyor",en:"is listening to Nickelback"},{tr:"kahve falı bakıyor",en:"is reading coffee fortunes"},
+    {tr:"limon satıyor",en:"is selling lemons"},{tr:"Türkçe konuşuyor",en:"is speaking Turkish"},
+    {tr:"lolipop emiyor",en:"is sucking on a lollipop"},{tr:"Türk dizisi izliyor",en:"is watching a Turkish soap opera"},
+    {tr:"hükümeti eleştiriyor",en:"is criticising the government"},
+    {tr:"Barış Alper'e küfrediyor",en:"is swearing at Barış Alper"},{tr:"saz çalıyor",en:"is playing the saz"},
+    {tr:"balon patlatıyor",en:"is popping balloons"},{tr:"kaçakçılık yapıyor",en:"is smuggling"},
+    {tr:"\"HasanAbi\" izliyor",en:"is watching HasanAbi"},
+    {tr:"\"Şımarık\" dinleyip Tarkan gibi kıvırtıyor",en:"is listening to Şımarık and dancing like Tarkan"},
+    {tr:"teravih namazı kılıyor",en:"is doing teravih prayer"},{tr:"at yarışı izliyor",en:"is watching horse racing"},
+    {tr:"dans pistinde karşılaşıyor",en:"is meeting on the dance floor"},
+    {tr:"eşek gibi bağırıyor",en:"is braying like a donkey"},
+    {tr:"yabancıları kazıklıyor",en:"is ripping off tourists"}
   ]
 };
 
@@ -425,6 +449,7 @@ const state = { kim: null, kiminle: null, nerede: null, nezaman: null, neyapiyor
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 function draw(cat) {
+  if (state[cat] !== null) return;
   if (cat === 'kiminle') {
     const p = pick(pools.kim);
     state[cat] = { tr: p.tr + ' ile', en: 'with ' + p.en };
@@ -475,8 +500,8 @@ function renderResults() {
 
   if (filled.length === 5) {
     sentence.style.display = 'block';
-    const tr = `${state.kim.tr}, ${state.kiminle.tr} ${state.nerede.tr} ${state.nezaman.tr} ${state.neyapiyor.tr}.`;
-    const en = `${state.kim.en} ${state.neyapiyor.en} ${state.kiminle.en} ${state.nerede.en} ${state.nezaman.en}.`;
+    const tr = `<span class="sc-kim">${state.kim.tr}</span>, <span class="sc-kiminle">${state.kiminle.tr}</span> <span class="sc-nerede">${state.nerede.tr}</span> <span class="sc-nezaman">${state.nezaman.tr}</span> <span class="sc-neyapiyor">${state.neyapiyor.tr}</span>.`;
+    const en = `<span class="se-kim">${state.kim.en}</span> <span class="se-neyapiyor">${state.neyapiyor.en}</span> <span class="se-kiminle">${state.kiminle.en}</span> <span class="se-nerede">${state.nerede.en}</span> <span class="se-nezaman">${state.nezaman.en}</span>.`;
     sentence.innerHTML = `<div>${tr}</div><div class="sentence-en">${en}</div>`;
   } else {
     sentence.style.display = 'none';
